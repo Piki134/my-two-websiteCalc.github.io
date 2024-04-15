@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>That's a BINGO!</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="but.css">
+        <script>
+
+            function calc()
+            {
+                var n1 = parseFloat(document.getElementById('n1').value); // вес
+                var n2 = parseFloat(document.getElementById('n2').value); // рост
+                var n3 = parseFloat(document.getElementById('n3').value); // возраст
+
+                var oper = document.getElementById('operators').value; // выбор пола
+
+                  if(oper === '+') // если женский пол то:
+                {
+                    let n4 = ((((n1*10) + n2*6.25) - n3*5) - 161)*1.55 // вычисляем ккал
+
+                    document.getElementById('result').value = n4;
+                    alert(`Госпожа вам нужно есть ${Math.round(n4*0.075)} гр белка, ${Math.round(n4*0.075)} гр жиров\n и ${Math.round(n4*0.1)} гр углеводов!`)
+                }
+
+                if(oper === '-')
+                {
+                    let n4 = ((((n1*10) + n2*6.25) - n3*5)+ 5)*1.55
+                    document.getElementById('result').value = n4 ;
+                    alert(`Господин вам нужно есть ${Math.round(n4*0.075)} гр белка, ${Math.round(n4*0.075)} гр жиров\n и ${Math.round(n4*0.1)} гр углеводов!`)
+                }
+            }
+
+
+
+        </script>
+
+    </head>
+    <body>
+        <input type="number" id="n1" placeholder="Введите свой вес" class="yu" autocomplete="off"/><br/><br/>
+        <input type="number" id="n2" placeholder="Введите свой рост" class="yu" autocomplete="off" /><br/><br/>
+        <input type="number" id="n3" placeholder="Введите свой возраст" class="yu" autocomplete="off" /><br/><br/>
+
+        <span style=" color:red; ">Укажите свой пол:</span>
+        <select id="operators">
+
+            <option value="+">Женский</option>
+            <option value="-">Мужской</option>
+
+        </select>
+        <button onclick="calc();" class="Dieter_Hellstrom" >=</button>
+        <input type="text" id="result" placeholder="Ккал в день" autocomplete="off" class="Dieter_Hellstrom" />
+
+    </body>
+</html>
